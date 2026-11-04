@@ -7,7 +7,8 @@ public class Health : MonoBehaviour
 {
     public int hp = 3;
     public int maxHp = 5;
-    public TextMeshProUGUI hpText;     
+    public TextMeshProUGUI hpText;
+    public Transform heartsRoot;     
     public AudioClip hurtClip;
     public AudioClip healClip;
 
@@ -17,7 +18,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        rend = GetComponent<Renderer>();
+        rend = GetComponentInChildren<Renderer>();
         src = GetComponent<AudioSource>();
         UpdateUI();
     }
@@ -64,9 +65,14 @@ public class Health : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    void UpdateUI()
+   void UpdateUI()
     {
-        if (hpText != null) hpText.text = "HP: " + hp;
+    if (hpText != null) hpText.text = "HP: " + hp;
+    if (heartsRoot == null) return;
+    for (int i = 0; i < heartsRoot.childCount; i++)
+    {
+        heartsRoot.GetChild(i).gameObject.SetActive(i < hp);
+    }
     }
 
     void Play(AudioClip clip)
