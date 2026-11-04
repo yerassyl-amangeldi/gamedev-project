@@ -12,6 +12,6 @@ public class PlayerProfile : MonoBehaviour
         nameText.text = PlayerPrefs.GetString("PlayerName", "Player");
 
         int colorIndex = PlayerPrefs.GetInt("PlayerColor", 0);
-        GetComponent<Renderer>().material.color = colors[colorIndex];
+        GetComponentInChildren<Renderer>().material.color = colors[colorIndex];
     }
 }

@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
 
         Time.timeScale = 1f;
         totalCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
-        if (coinText != null) coinText.text = "Монеты " + coins + " / " + totalCoins;
+        if (coinText != null) coinText.text = "SCORE " + coins;
         if (messageText != null) messageText.text = "";
     }
 
@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        bool firePressed = playerInput != null && playerInput.actions["Fire"].IsPressed();
+        bool firePressed = Time.timeScale > 0f && playerInput != null && playerInput.actions["Fire"].IsPressed();
         if (firePressed && shooter != null) shooter.Shoot();
 
         if (transform.position.y < -10f) Restart();
@@ -79,7 +79,7 @@ public class Movement : MonoBehaviour
         {
             Destroy(other.gameObject);
             coins++;
-            if (coinText != null) coinText.text = "Монеты " + coins + " / " + totalCoins;
+            if (coinText != null) coinText.text = "SCORE " + coins;
             if (src != null && coinClip != null) src.PlayOneShot(coinClip);
         }
 
