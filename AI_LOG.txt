@@ -1,0 +1,14 @@
+AI LOG
+
+Tool: Claude.ai
+
+What I used it for:
+- Understanding Assignment 8-9 requirements
+- Step-by-step instructions for Unity UI, Canvas Scaler, anchors and Safe Area
+- Help with GitHub, GDD and video planning
+
+Code taken from AI:
+- SafeArea.cs, PauseMenu.cs, PlayerVisual.cs
+- Changes in Health.cs, Movement.cs, PlayerProfile.cs
+
+All edits in Unity and in the code were made by me.
