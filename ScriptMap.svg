@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Arial, sans-serif">
+  <rect width="1200" height="700" fill="#ffffff"/>
+  <text x="600" y="40" font-size="28" font-weight="bold" text-anchor="middle">Gate Runner — Enemy Script Map (Level3)</text>
+
+  <!-- shared -->
+  <rect x="380" y="70" width="200" height="60" rx="8" fill="#fff4c2" stroke="#333"/>
+  <text x="480" y="98" font-size="18" text-anchor="middle" font-weight="bold">EnemyVision</text>
+  <text x="480" y="118" font-size="13" text-anchor="middle">distance + angle + Raycast</text>
+  <rect x="620" y="70" width="200" height="60" rx="8" fill="#ffd6d6" stroke="#333"/>
+  <text x="720" y="98" font-size="18" text-anchor="middle" font-weight="bold">EnemyHealth</text>
+  <text x="720" y="118" font-size="13" text-anchor="middle">Bullet hit → hp − 1</text>
+  <text x="600" y="155" font-size="14" text-anchor="middle" fill="#555">used by all 3 enemies (+ NavMeshAgent)</text>
+
+  <!-- columns -->
+  <g font-size="15" text-anchor="middle">
+    <!-- Patroller -->
+    <text x="200" y="200" font-size="22" font-weight="bold" fill="#2a5bd7">EnemyPatrol</text>
+    <rect x="120" y="220" width="160" height="40" rx="6" fill="#dbe6ff" stroke="#333"/><text x="200" y="246">Patrol</text>
+    <rect x="120" y="300" width="160" height="40" rx="6" fill="#dbe6ff" stroke="#333"/><text x="200" y="326">Chase</text>
+    <rect x="120" y="380" width="160" height="40" rx="6" fill="#fff59d" stroke="#333"/><text x="200" y="406">WindUp 0.5s</text>
+    <rect x="120" y="460" width="160" height="40" rx="6" fill="#ffccbc" stroke="#333"/><text x="200" y="486">Attack</text>
+    <rect x="120" y="540" width="160" height="40" rx="6" fill="#e0e0e0" stroke="#333"/><text x="200" y="566">Cooldown 1.2s</text>
+    <text x="300" y="285" font-size="12" text-anchor="start">sees player</text>
+    <text x="300" y="365" font-size="12" text-anchor="start">dist &lt; 1.8</text>
+    <text x="20" y="325" font-size="12" text-anchor="start">dist &gt; 14</text>
+    <text x="300" y="610" font-size="12" text-anchor="middle">→ back to Chase</text>
+
+    <!-- Shooter -->
+    <text x="600" y="200" font-size="22" font-weight="bold" fill="#8a2be2">EnemyShooter</text>
+    <rect x="520" y="220" width="160" height="40" rx="6" fill="#ead9ff" stroke="#333"/><text x="600" y="246">Idle (look around)</text>
+    <rect x="520" y="320" width="160" height="40" rx="6" fill="#fff59d" stroke="#333"/><text x="600" y="346">WindUp 0.6s</text>
+    <rect x="520" y="420" width="160" height="40" rx="6" fill="#ffccbc" stroke="#333"/><text x="600" y="446">Shoot</text>
+    <rect x="520" y="520" width="160" height="40" rx="6" fill="#e0e0e0" stroke="#333"/><text x="600" y="546">Cooldown 2s + move</text>
+    <text x="700" y="295" font-size="12" text-anchor="start">sees player + on screen</text>
+    <text x="700" y="395" font-size="12" text-anchor="start">timer done</text>
+    <text x="440" y="300" font-size="12" text-anchor="middle">lost sight</text>
+    <text x="600" y="600" font-size="12">→ back to Idle</text>
+
+    <!-- Charger -->
+    <text x="1000" y="200" font-size="22" font-weight="bold" fill="#e67e00">EnemyCharger</text>
+    <rect x="920" y="220" width="160" height="40" rx="6" fill="#ffe0b2" stroke="#333"/><text x="1000" y="246">Walk (slow)</text>
+    <rect x="920" y="320" width="160" height="40" rx="6" fill="#fff59d" stroke="#333"/><text x="1000" y="346">WindUp 0.7s</text>
+    <rect x="920" y="420" width="160" height="40" rx="6" fill="#ffccbc" stroke="#333"/><text x="1000" y="446">Charge 0.6s</text>
+    <rect x="920" y="520" width="160" height="40" rx="6" fill="#e0e0e0" stroke="#333"/><text x="1000" y="546">Tired 1.5s (grey)</text>
+    <text x="1100" y="295" font-size="12" text-anchor="start">dist &lt; 9</text>
+    <text x="1100" y="395" font-size="12" text-anchor="start">timer done</text>
+    <text x="1000" y="600" font-size="12">→ back to Walk</text>
+  </g>
+
+  <g stroke="#333" stroke-width="2" marker-end="url(#a)">
+    <line x1="200" y1="260" x2="200" y2="298"/><line x1="200" y1="340" x2="200" y2="378"/>
+    <line x1="200" y1="420" x2="200" y2="458"/><line x1="200" y1="500" x2="200" y2="538"/>
+    <line x1="600" y1="260" x2="600" y2="318"/><line x1="600" y1="360" x2="600" y2="418"/>
+    <line x1="600" y1="460" x2="600" y2="518"/>
+    <line x1="1000" y1="260" x2="1000" y2="318"/><line x1="1000" y1="360" x2="1000" y2="418"/>
+    <line x1="1000" y1="460" x2="1000" y2="518"/>
+  </g>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+
+  <text x="600" y="660" font-size="15" text-anchor="middle" fill="#333">Yellow = wind-up (visible warning before every attack). All numbers are public fields in the Inspector.</text>
+</svg>
