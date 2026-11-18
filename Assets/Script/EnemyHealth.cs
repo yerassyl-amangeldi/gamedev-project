@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int hp = 3;
+    public int hp;
 
     private void OnTriggerEnter(Collider other)
     {

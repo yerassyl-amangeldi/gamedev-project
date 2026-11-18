@@ -6,12 +6,8 @@ public class EnemyShooter : MonoBehaviour
     public enum State { Idle, WindUp, Shoot, Cooldown }
     public State state = State.Idle;
 
+    public EnemyStats stats;
     public Rock bulletPrefab;
-    public float bulletSpeed = 7f;
-    public float turnSpeed = 45f;
-    public float windUpTime = 0.6f;
-    public float cooldownTime = 2f;
-    public float moveRadius = 4f;
     public Color normalColor = new Color(0.6f, 0.2f, 0.9f);
     public Color windUpColor = Color.yellow;
 
@@ -29,6 +25,11 @@ public class EnemyShooter : MonoBehaviour
         rend = GetComponent<Renderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        vision.viewDistance = stats.viewDistance;
+        vision.viewAngle = stats.viewAngle;
+        GetComponent<EnemyHealth>().hp = stats.hp;
+        agent.speed = stats.speed;
+
         home = transform.position;
         rend.material.color = normalColor;
     }
@@ -38,12 +39,12 @@ public class EnemyShooter : MonoBehaviour
         switch (state)
         {
             case State.Idle:
-                transform.Rotate(0f, turnSpeed * Time.deltaTime, 0f);
+                transform.Rotate(0f, stats.turnSpeed * Time.deltaTime, 0f);
                 if (vision.CanSeePlayer() && rend.isVisible)
                 {
                     agent.ResetPath();
                     rend.material.color = windUpColor;
-                    timer = windUpTime;
+                    timer = stats.windUpTime;
                     state = State.WindUp;
                 }
                 break;
@@ -66,7 +67,7 @@ public class EnemyShooter : MonoBehaviour
                 Fire();
                 rend.material.color = normalColor;
                 MoveToNewSpot();
-                timer = cooldownTime;
+                timer = stats.cooldownTime;
                 state = State.Cooldown;
                 break;
 
@@ -91,12 +92,12 @@ public class EnemyShooter : MonoBehaviour
         Rock ball = Instantiate(bulletPrefab, pos, Quaternion.LookRotation(dir));
         Rigidbody rb = ball.GetComponent<Rigidbody>();
         rb.useGravity = false;
-        rb.linearVelocity = dir * bulletSpeed;
+        rb.linearVelocity = dir * stats.fastSpeed;
     }
 
     private void MoveToNewSpot()
     {
-        Vector3 random = home + new Vector3(Random.Range(-moveRadius, moveRadius), 0f, Random.Range(-moveRadius, moveRadius));
+        Vector3 random = home + new Vector3(Random.Range(-stats.range, stats.range), 0f, Random.Range(-stats.range, stats.range));
         agent.SetDestination(random);
     }
 

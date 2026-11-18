@@ -3,16 +3,17 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public float cooldown = 0.3f;
     public AudioClip shootClip;
 
     private float nextShot;
     private Vector3 aimDir = Vector3.forward;
     private AudioSource src;
+    private PlayerStats stats;
 
     private void Start()
     {
         src = GetComponent<AudioSource>();
+        stats = GetComponent<Movement>().stats;
     }
 
     public void SetAim(Vector2 direction)
@@ -24,10 +25,11 @@ public class Shooter : MonoBehaviour
     public void Shoot()
     {
         if (bulletPrefab == null || Time.time < nextShot) return;
-        nextShot = Time.time + cooldown;
+        nextShot = Time.time + stats.shootCooldown;
 
         Vector3 pos = transform.position + aimDir * 0.8f;
-        Instantiate(bulletPrefab, pos, Quaternion.LookRotation(aimDir));
+        GameObject bullet = Instantiate(bulletPrefab, pos, Quaternion.LookRotation(aimDir));
+        bullet.GetComponent<Bullet>().speed = stats.bulletSpeed;
 
         if (src != null && shootClip != null) src.PlayOneShot(shootClip);
     }

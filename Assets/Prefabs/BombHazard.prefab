@@ -154,7 +154,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BombHazard
   lifetime: 12
-  fuse: 2
-  explosionRadius: 3
-  explosionDamage: 1
+  items: {fileID: 11400000, guid: 0f092bfd92734b708e270a62c96cbb5a, type: 2}
   explosionPrefab: {fileID: 0}

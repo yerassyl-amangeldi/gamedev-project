@@ -2,34 +2,28 @@ using UnityEngine;
 
 public class BombHazard : Hazard
 {
-    public float fuse = 2f;
-    public float explosionRadius = 3f;
-    public int explosionDamage = 1;          
     public GameObject explosionPrefab;      
     bool armed; 
 
 
     protected override void OnHitPlayer(Health p)
     {
-        p.TakeDamage(2);
+        p.TakeDamage(items.bombHitDamage);
     }
 
     protected override void OnLanded()
     {
         if (armed) return;
         armed = true;
-        Invoke(nameof(Explode), fuse);       
+        Invoke(nameof(Explode), items.bombFuse);       
     }
 
     void Explode()
     {
-        if (explosionDamage > 0)
+        foreach (Collider col in Physics.OverlapSphere(transform.position, items.bombRadius))
         {
-            foreach (Collider col in Physics.OverlapSphere(transform.position, explosionRadius))
-            {
-                Health h = col.GetComponent<Health>();
-                if (h != null) h.TakeDamage(explosionDamage);
-            }
+            Health h = col.GetComponent<Health>();
+            if (h != null) h.TakeDamage(items.bombExplosionDamage);
         }
 
         ShowExplosion();
@@ -47,7 +41,7 @@ public class BombHazard : Hazard
         {
             fx = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             fx.transform.position = transform.position;
-            fx.transform.localScale = Vector3.one * explosionRadius * 2f;
+            fx.transform.localScale = Vector3.one * items.bombRadius * 2f;
             Destroy(fx.GetComponent<Collider>());
             fx.GetComponent<Renderer>().material.color = new Color(1f, 0.5f, 0.1f);
         }

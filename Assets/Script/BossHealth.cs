@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
-    public int maxHp = 3;
+    public BossStats stats;
     public TextMeshProUGUI bossHpText;
 
     private int currentHp;
@@ -13,7 +13,7 @@ public class BossHealth : MonoBehaviour
 
     void Start()
     {
-        currentHp = maxHp;
+        currentHp = stats.maxHp;
         UpdateHPText();
     }
 
@@ -44,6 +44,7 @@ public class BossHealth : MonoBehaviour
             Debug.Log("BOSS DEFEATED!");
 
             Time.timeScale = 1f;
+            SaveSystem.CompleteLevel(SceneManager.GetActiveScene().buildIndex, 0);
             SceneManager.LoadScene("Win");
         }
 
@@ -53,7 +54,7 @@ public class BossHealth : MonoBehaviour
     {
         if (bossHpText != null)
         {
-            bossHpText.text = "BOSS HP: " + currentHp + "/" + maxHp;
+            bossHpText.text = "BOSS HP: " + currentHp + "/" + stats.maxHp;
         }
     }
 }

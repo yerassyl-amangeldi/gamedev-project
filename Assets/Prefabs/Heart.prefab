@@ -156,3 +156,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Heart
   lifetime: 12
+  items: {fileID: 11400000, guid: 0f092bfd92734b708e270a62c96cbb5a, type: 2}

@@ -3,7 +3,7 @@ using TMPro;
 
 public class SurvivalTimer : MonoBehaviour
 {
-    public float goal = 60f;
+    public float goal;
     public Animator gateAnimator;      
     public Spawner spawner;             
     public TextMeshProUGUI timerText;   

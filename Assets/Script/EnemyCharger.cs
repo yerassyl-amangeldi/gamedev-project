@@ -6,13 +6,7 @@ public class EnemyCharger : MonoBehaviour
     public enum State { Walk, WindUp, Charge, Tired }
     public State state = State.Walk;
 
-    public float walkSpeed = 1.5f;
-    public float noticeDistance = 9f;
-    public float windUpTime = 0.7f;
-    public float chargeSpeed = 14f;
-    public float chargeTime = 0.6f;
-    public float tiredTime = 1.5f;
-    public int damage = 1;
+    public EnemyStats stats;
     public Color normalColor = new Color(1f, 0.5f, 0f);
     public Color windUpColor = Color.yellow;
     public Color tiredColor = Color.gray;
@@ -32,6 +26,10 @@ public class EnemyCharger : MonoBehaviour
         rend = GetComponent<Renderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        vision.viewDistance = stats.viewDistance;
+        vision.viewAngle = stats.viewAngle;
+        GetComponent<EnemyHealth>().hp = stats.hp;
+
         rend.material.color = normalColor;
     }
 
@@ -42,13 +40,13 @@ public class EnemyCharger : MonoBehaviour
         switch (state)
         {
             case State.Walk:
-                agent.speed = walkSpeed;
+                agent.speed = stats.speed;
                 agent.SetDestination(player.position);
-                if (dist < noticeDistance && vision.CanSeePlayer())
+                if (dist < stats.range && vision.CanSeePlayer())
                 {
                     agent.ResetPath();
                     rend.material.color = windUpColor;
-                    timer = windUpTime;
+                    timer = stats.windUpTime;
                     state = State.WindUp;
                 }
                 break;
@@ -61,23 +59,23 @@ public class EnemyCharger : MonoBehaviour
                     chargeDir = transform.forward;
                     rend.material.color = normalColor;
                     hitDone = false;
-                    timer = chargeTime;
+                    timer = stats.attackTime;
                     state = State.Charge;
                 }
                 break;
 
             case State.Charge:
-                agent.Move(chargeDir * chargeSpeed * Time.deltaTime);
+                agent.Move(chargeDir * stats.fastSpeed * Time.deltaTime);
                 if (!hitDone && dist < 1.5f)
                 {
-                    player.GetComponent<Health>().TakeDamage(damage);
+                    player.GetComponent<Health>().TakeDamage(stats.damage);
                     hitDone = true;
                 }
                 timer -= Time.deltaTime;
                 if (timer <= 0f)
                 {
                     rend.material.color = tiredColor;
-                    timer = tiredTime;
+                    timer = stats.cooldownTime;
                     state = State.Tired;
                 }
                 break;

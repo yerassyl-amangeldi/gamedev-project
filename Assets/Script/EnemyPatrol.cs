@@ -6,14 +6,8 @@ public class EnemyPatrol : MonoBehaviour
     public enum State { Patrol, Chase, WindUp, Attack, Cooldown }
     public State state = State.Patrol;
 
+    public EnemyStats stats;
     public Transform[] points;
-    public float patrolSpeed = 2f;
-    public float chaseSpeed = 4f;
-    public float attackRange = 1.8f;
-    public float loseDistance = 14f;
-    public float windUpTime = 0.5f;
-    public float cooldownTime = 1.2f;
-    public int damage = 1;
     public Color normalColor = new Color(0.2f, 0.4f, 1f);
     public Color windUpColor = Color.yellow;
 
@@ -31,6 +25,10 @@ public class EnemyPatrol : MonoBehaviour
         rend = GetComponent<Renderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        vision.viewDistance = stats.viewDistance;
+        vision.viewAngle = stats.viewAngle;
+        GetComponent<EnemyHealth>().hp = stats.hp;
+
         rend.material.color = normalColor;
         GoToNextPoint();
     }
@@ -42,22 +40,22 @@ public class EnemyPatrol : MonoBehaviour
         switch (state)
         {
             case State.Patrol:
-                agent.speed = patrolSpeed;
+                agent.speed = stats.speed;
                 if (!agent.pathPending && agent.remainingDistance < 0.5f) GoToNextPoint();
                 if (vision.CanSeePlayer()) state = State.Chase;
                 break;
 
             case State.Chase:
-                agent.speed = chaseSpeed;
+                agent.speed = stats.fastSpeed;
                 agent.SetDestination(player.position);
-                if (dist < attackRange)
+                if (dist < stats.range)
                 {
                     agent.ResetPath();
                     rend.material.color = windUpColor;
-                    timer = windUpTime;
+                    timer = stats.windUpTime;
                     state = State.WindUp;
                 }
-                else if (dist > loseDistance)
+                else if (dist > stats.loseDistance)
                 {
                     GoToNextPoint();
                     state = State.Patrol;
@@ -71,9 +69,9 @@ public class EnemyPatrol : MonoBehaviour
                 break;
 
             case State.Attack:
-                if (dist < attackRange + 0.5f) player.GetComponent<Health>().TakeDamage(damage);
+                if (dist < stats.range) player.GetComponent<Health>().TakeDamage(stats.damage);
                 rend.material.color = normalColor;
-                timer = cooldownTime;
+                timer = stats.cooldownTime;
                 state = State.Cooldown;
                 break;
 

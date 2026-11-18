@@ -7,8 +7,7 @@ using TMPro;
 public class Movement : MonoBehaviour
 {
     public Animator gateAnimator;
-    public float speed = 5f;
-    public float jumpForce = 300f;
+    public PlayerStats stats;
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI messageText;
     public AudioClip coinClip;
@@ -48,7 +47,7 @@ public class Movement : MonoBehaviour
     {
         if (value.isPressed && onGround && rb != null)
         {
-            rb.AddForce(Vector3.up * jumpForce);
+            rb.AddForce(Vector3.up * stats.jumpForce);
             onGround = false;
         }
     }
@@ -69,7 +68,7 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         if (rb == null) return;
-        rb.linearVelocity = new Vector3(move.x * speed, rb.linearVelocity.y, move.y * speed);
+        rb.linearVelocity = new Vector3(move.x * stats.speed, rb.linearVelocity.y, move.y * stats.speed);
         onGround = false;
     }
 
@@ -88,6 +87,7 @@ public class Movement : MonoBehaviour
             if (gateAnimator != null && gateAnimator.GetBool("Open"))
             {
 
+                SaveSystem.CompleteLevel(SceneManager.GetActiveScene().buildIndex, coins);
                 int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
 
                 if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)

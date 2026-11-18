@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyVision : MonoBehaviour
 {
-    public float viewDistance = 10f;
-    public float viewAngle = 90f;
+    public float viewDistance;
+    public float viewAngle;
 
     private Transform player;
 

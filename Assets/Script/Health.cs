@@ -5,19 +5,22 @@ using TMPro;
 
 public class Health : MonoBehaviour
 {
-    public int hp = 3;
-    public int maxHp = 5;
+    public int hp;
     public TextMeshProUGUI hpText;
     public Transform heartsRoot;     
     public AudioClip hurtClip;
     public AudioClip healClip;
 
+    int maxHp;
     bool invincible;
     Renderer rend;
     AudioSource src;
 
     void Start()
     {
+        PlayerStats stats = GetComponent<Movement>().stats;
+        hp = stats.startHp;
+        maxHp = stats.maxHp;
         rend = GetComponentInChildren<Renderer>();
         src = GetComponent<AudioSource>();
         UpdateUI();

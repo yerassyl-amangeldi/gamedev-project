@@ -3,7 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Hazard : MonoBehaviour
 {
-    public float lifetime = 12f;  
+    public float lifetime = 12f;
+    public ItemStats items;
 
     public virtual bool Shootable => true;
 
@@ -27,7 +28,7 @@ public class Hazard : MonoBehaviour
 
     protected virtual void OnHitPlayer(Health player)
     {
-        player.TakeDamage(1);
+        player.TakeDamage(items.rockDamage);
     }
 
     protected virtual void OnLanded() { }

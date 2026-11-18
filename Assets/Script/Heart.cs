@@ -4,6 +4,6 @@ public class Heart : Hazard
 
     protected override void OnHitPlayer(Health p)
     {
-        p.Heal(1);
+        p.Heal(items.heartHeal);
     }
 }
