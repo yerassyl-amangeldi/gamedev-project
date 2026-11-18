@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3224bd8039a434fbac06e7d340c8835, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  maxHp: 25
+  firstDelay: 2
+  attackInterval: 2
+  projectileSpeed: 10
+  rageHp: 5
+  rageInterval: 0.2
