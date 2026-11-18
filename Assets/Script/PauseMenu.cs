@@ -29,6 +29,11 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    private void OnApplicationPause(bool paused)
+    {
+        if (paused) SaveSystem.Save();
+    }
+
     public void Menu()
     {
         Time.timeScale = 1f;

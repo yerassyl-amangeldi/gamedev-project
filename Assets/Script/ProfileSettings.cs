@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ProfileSettings : MonoBehaviour
@@ -14,38 +13,45 @@ public class ProfileSettings : MonoBehaviour
 
     void Start()
     {
-        nameField.text = PlayerPrefs.GetString("PlayerName", "");
-        colorDropdown.value = PlayerPrefs.GetInt("PlayerColor", 0);
-        fullscreenToggle.isOn = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
-        musicToggle.isOn = PlayerPrefs.GetInt("Music", 1) == 1;
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume", 1f);
+        SaveData data = SaveSystem.Data;
+        nameField.text = data.playerName;
+        colorDropdown.value = data.playerColor;
+        fullscreenToggle.isOn = data.fullscreen;
+        musicToggle.isOn = data.music;
+        volumeSlider.value = data.volume;
+        bgSound.mute = !data.music;
+        bgSound.volume = data.volume;
     }
 
     public void SaveName(string value)
     {
-        PlayerPrefs.SetString("PlayerName", value);
+        SaveSystem.Data.playerName = value;
+        SaveSystem.Save();
     }
 
     public void SaveColor(int index)
     {
-        PlayerPrefs.SetInt("PlayerColor", index);
+        SaveSystem.Data.playerColor = index;
+        SaveSystem.Save();
     }
 
     public void SetFullscreen(bool isOn)
     {
         Screen.fullScreen = isOn;
-        PlayerPrefs.SetInt("Fullscreen", isOn ? 1 : 0);
+        SaveSystem.Data.fullscreen = isOn;
+        SaveSystem.Save();
     }
 
     public void SetMusic(bool isOn)
     {
         bgSound.mute = !isOn;
-        PlayerPrefs.SetInt("Music", isOn ? 1 : 0);
+        SaveSystem.Data.music = isOn;
+        SaveSystem.Save();
     }
 
     public void ResetAll()
     {
-        PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("Main menu");
+        SaveSystem.ResetProgress();
+        Start();
     }
 }

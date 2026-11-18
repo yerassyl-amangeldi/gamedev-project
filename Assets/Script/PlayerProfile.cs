@@ -9,9 +9,9 @@ public class PlayerProfile : MonoBehaviour
 
     void Start()
     {
-        nameText.text = PlayerPrefs.GetString("PlayerName", "Player");
+        nameText.text = SaveSystem.Data.playerName;
 
-        int colorIndex = PlayerPrefs.GetInt("PlayerColor", 0);
+        int colorIndex = Mathf.Clamp(SaveSystem.Data.playerColor, 0, colors.Length - 1);
         GetComponentInChildren<Renderer>().material.color = colors[colorIndex];
     }
 }

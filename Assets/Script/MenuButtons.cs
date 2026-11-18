@@ -5,11 +5,12 @@ public class MenuButtons : MonoBehaviour
 {
     public AudioSource bgSound;
     public GameObject settingsPanel;
+    public GameObject levelSelectPanel;
 
 
     public void Play()
     {
-        SceneManager.LoadScene("Level1"); 
+        levelSelectPanel.SetActive(true);
     }
 
      public void Quit()
@@ -35,8 +36,14 @@ public class MenuButtons : MonoBehaviour
     public void SetVolume(float value)
     {
         bgSound.volume = value;
-        PlayerPrefs.SetFloat("Volume", value); 
+        SaveSystem.Data.volume = value;
+        SaveSystem.Save();
     }
+    private void OnApplicationPause(bool paused)
+    {
+        if (paused) SaveSystem.Save();
+    }
+
     public void OpenPanel(GameObject panel)
     {
         panel.SetActive(true);
