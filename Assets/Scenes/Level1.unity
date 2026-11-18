@@ -2642,7 +2642,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
   bulletPrefab: {fileID: 8979041293106347170, guid: 373985306c8ba40cc8aded6370c66dd2, type: 3}
-  cooldown: 0.3
   shootClip: {fileID: 8300000, guid: 62176cda0e19e43c38eedd0c45318907, type: 3}
 --- !u!114 &1466330543
 MonoBehaviour:
@@ -2657,7 +2656,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   hp: 3
-  maxHp: 5
   hpText: {fileID: 0}
   heartsRoot: {fileID: 1871949723}
   hurtClip: {fileID: 8300000, guid: b8afbe044ff144c63b8a6ffc84c856a3, type: 3}
@@ -2772,8 +2770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   gateAnimator: {fileID: 1330360474}
-  speed: 5
-  jumpForce: 600
+  stats: {fileID: 11400000, guid: 2699536bb4a54c9b9082caa0e4de4786, type: 2}
   coinText: {fileID: 593094633}
   messageText: {fileID: 1925033397}
   coinClip: {fileID: 0}
@@ -2807,6 +2804,53 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &1533757287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1533757289}
+  - component: {fileID: 1533757288}
+  m_Layer: 0
+  m_Name: LevelLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1533757288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533757287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b487532f603e45d8b88a7ecef273d26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelLoader
+  level: {fileID: 11400000, guid: 465bcdddc07044b3a64d3ee219e0aa0f, type: 2}
+  spawner: {fileID: 1052641978}
+  timer: {fileID: 1942751338}
+--- !u!4 &1533757289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533757287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.79918, y: 0, z: 0.33857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535423884
 GameObject:
   m_ObjectHideFlags: 0
@@ -5008,3 +5052,4 @@ SceneRoots:
   - {fileID: 1535423888}
   - {fileID: 1052641979}
   - {fileID: 1942751339}
+  - {fileID: 1533757289}

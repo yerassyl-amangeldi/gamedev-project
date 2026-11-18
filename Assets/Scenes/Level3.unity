@@ -1481,13 +1481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCharger
   state: 0
-  walkSpeed: 1.5
-  noticeDistance: 9
-  windUpTime: 0.7
-  chargeSpeed: 11
-  chargeTime: 0.6
-  tiredTime: 1.5
-  damage: 1
+  stats: {fileID: 11400000, guid: 7278335784604b72b2ca2ae3cdeb0f05, type: 2}
   normalColor: {r: 1, g: 0.5, b: 0, a: 1}
   windUpColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   tiredColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -2304,12 +2298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
   state: 0
+  stats: {fileID: 11400000, guid: 5241f1ca58264171bc44a2406c1d34f3, type: 2}
   bulletPrefab: {fileID: 3244803782870828237, guid: 618c41ec0fdc44b00840e288d653a521, type: 3}
-  bulletSpeed: 7
-  turnSpeed: 45
-  windUpTime: 0.6
-  cooldownTime: 2
-  moveRadius: 4
   normalColor: {r: 0.6, g: 0.2, b: 0.9, a: 1}
   windUpColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &869726887
@@ -3652,6 +3642,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391883565}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1447685627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1447685629}
+  - component: {fileID: 1447685628}
+  m_Layer: 0
+  m_Name: LevelLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1447685628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447685627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b487532f603e45d8b88a7ecef273d26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelLoader
+  level: {fileID: 11400000, guid: 00fa83b8de0d45bf9eba67c175ac8882, type: 2}
+  spawner: {fileID: 1052641978}
+  timer: {fileID: 1942751338}
+--- !u!4 &1447685629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447685627}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.79917, y: 0, z: 0.33857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1466330533
 GameObject:
   m_ObjectHideFlags: 0
@@ -3781,7 +3818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooter
   bulletPrefab: {fileID: 8979041293106347170, guid: 373985306c8ba40cc8aded6370c66dd2, type: 3}
-  cooldown: 0.3
   shootClip: {fileID: 8300000, guid: 62176cda0e19e43c38eedd0c45318907, type: 3}
 --- !u!114 &1466330543
 MonoBehaviour:
@@ -3796,7 +3832,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   hp: 3
-  maxHp: 5
   hpText: {fileID: 0}
   heartsRoot: {fileID: 1829187040}
   hurtClip: {fileID: 8300000, guid: b8afbe044ff144c63b8a6ffc84c856a3, type: 3}
@@ -3911,8 +3946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement
   gateAnimator: {fileID: 1330360474}
-  speed: 5
-  jumpForce: 600
+  stats: {fileID: 11400000, guid: 2699536bb4a54c9b9082caa0e4de4786, type: 2}
   coinText: {fileID: 74824886}
   messageText: {fileID: 1350137625}
   coinClip: {fileID: 0}
@@ -4208,7 +4242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 431ddfa6a7045461ab63f0f9ce9f3d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
-  maxHp: 25
+  stats: {fileID: 11400000, guid: 8964860e5b1544d99716d9b3878dfd7d, type: 2}
   bossHpText: {fileID: 559408450}
 --- !u!114 &1566693790
 MonoBehaviour:
@@ -4224,8 +4258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossAttack
   player: {fileID: 1466330537}
   fireballPrefab: {fileID: 3244803782870828237, guid: 618c41ec0fdc44b00840e288d653a521, type: 3}
-  attackInterval: 2
-  projectileSpeed: 10
 --- !u!1 &1629087521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4978,18 +5010,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPatrol
   state: 0
+  stats: {fileID: 11400000, guid: c01c2f2fb9e8493ab0b34fbedb690956, type: 2}
   points:
   - {fileID: 756260353}
   - {fileID: 689193565}
   - {fileID: 321513257}
   - {fileID: 2146226278}
-  patrolSpeed: 2
-  chaseSpeed: 4
-  attackRange: 1.8
-  loseDistance: 14
-  windUpTime: 0.5
-  cooldownTime: 1.2
-  damage: 1
   normalColor: {r: 0.2, g: 0.4, b: 1, a: 1}
   windUpColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &1747565887
@@ -6799,3 +6825,4 @@ SceneRoots:
   - {fileID: 1671697608}
   - {fileID: 1751161123}
   - {fileID: 1726300787}
+  - {fileID: 1447685629}
