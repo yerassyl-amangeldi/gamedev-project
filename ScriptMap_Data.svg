@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 720" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+  <rect width="1300" height="720" fill="#ffffff"/>
+  <text x="650" y="40" font-size="28" font-weight="bold" text-anchor="middle">Gate Runner — Data and Save Script Map</text>
+
+  <g font-size="16" font-weight="bold" text-anchor="middle" fill="#555">
+    <text x="150" y="80">Data assets (ScriptableObject)</text>
+    <text x="520" y="80">Scripts</text>
+    <text x="920" y="80">Save</text>
+    <text x="1180" y="80">File</text>
+  </g>
+
+  <g text-anchor="middle">
+    <rect x="40" y="100" width="220" height="70" rx="8" fill="#fff4c2" stroke="#333"/>
+    <text x="150" y="130" font-size="18" font-weight="bold">PlayerStats</text>
+    <text x="150" y="152" font-size="13">speed, jump, hp, shoot</text>
+
+    <rect x="40" y="200" width="220" height="70" rx="8" fill="#fff4c2" stroke="#333"/>
+    <text x="150" y="230" font-size="18" font-weight="bold">EnemyStats ×3</text>
+    <text x="150" y="252" font-size="13">Patroller, Shooter, Charger</text>
+
+    <rect x="40" y="300" width="220" height="70" rx="8" fill="#fff4c2" stroke="#333"/>
+    <text x="150" y="330" font-size="18" font-weight="bold">BossStats</text>
+    <text x="150" y="352" font-size="13">hp, attack speed, rage</text>
+
+    <rect x="40" y="400" width="220" height="70" rx="8" fill="#fff4c2" stroke="#333"/>
+    <text x="150" y="430" font-size="18" font-weight="bold">ItemStats</text>
+    <text x="150" y="452" font-size="13">rock, heart, bomb</text>
+
+    <rect x="40" y="500" width="220" height="70" rx="8" fill="#fff4c2" stroke="#333"/>
+    <text x="150" y="530" font-size="18" font-weight="bold">LevelData ×3</text>
+    <text x="150" y="552" font-size="13">goal time, spawn delay</text>
+
+    <rect x="380" y="100" width="280" height="70" rx="8" fill="#dbe6ff" stroke="#333"/>
+    <text x="520" y="130" font-size="18" font-weight="bold">Movement</text>
+    <text x="520" y="152" font-size="13">+ Health, Shooter, Bullet</text>
+
+    <rect x="380" y="200" width="280" height="70" rx="8" fill="#dbe6ff" stroke="#333"/>
+    <text x="520" y="230" font-size="18" font-weight="bold">EnemyPatrol / Shooter / Charger</text>
+    <text x="520" y="252" font-size="13">+ EnemyVision, EnemyHealth</text>
+
+    <rect x="380" y="300" width="280" height="70" rx="8" fill="#dbe6ff" stroke="#333"/>
+    <text x="520" y="330" font-size="18" font-weight="bold">BossHealth</text>
+    <text x="520" y="352" font-size="13">+ BossAttack</text>
+
+    <rect x="380" y="400" width="280" height="70" rx="8" fill="#dbe6ff" stroke="#333"/>
+    <text x="520" y="430" font-size="18" font-weight="bold">Hazard / Heart / BombHazard</text>
+    <text x="520" y="452" font-size="13">on prefabs</text>
+
+    <rect x="380" y="500" width="280" height="70" rx="8" fill="#dbe6ff" stroke="#333"/>
+    <text x="520" y="530" font-size="18" font-weight="bold">LevelLoader</text>
+    <text x="520" y="552" font-size="13">→ Spawner, SurvivalTimer</text>
+
+    <rect x="800" y="100" width="240" height="70" rx="8" fill="#ead9ff" stroke="#333"/>
+    <text x="920" y="130" font-size="18" font-weight="bold">LevelSelect</text>
+    <text x="920" y="152" font-size="13">LOCKED / LEVEL n, best score</text>
+
+    <rect x="800" y="300" width="240" height="70" rx="8" fill="#ffd6d6" stroke="#333" stroke-width="2"/>
+    <text x="920" y="330" font-size="20" font-weight="bold">SaveSystem</text>
+    <text x="920" y="352" font-size="13">Load, Save, CompleteLevel</text>
+
+    <rect x="800" y="500" width="240" height="70" rx="8" fill="#ead9ff" stroke="#333"/>
+    <text x="920" y="530" font-size="18" font-weight="bold">ProfileSettings</text>
+    <text x="920" y="552" font-size="13">+ MenuButtons, PauseMenu</text>
+
+    <rect x="1110" y="300" width="150" height="70" rx="8" fill="#e0e0e0" stroke="#333"/>
+    <text x="1185" y="330" font-size="18" font-weight="bold">save.json</text>
+    <text x="1185" y="352" font-size="12">persistentDataPath</text>
+  </g>
+
+  <g stroke="#333" stroke-width="2" fill="none" marker-end="url(#a)">
+    <line x1="260" y1="135" x2="378" y2="135"/>
+    <line x1="260" y1="235" x2="378" y2="235"/>
+    <line x1="260" y1="335" x2="378" y2="335"/>
+    <line x1="260" y1="435" x2="378" y2="435"/>
+    <line x1="260" y1="535" x2="378" y2="535"/>
+    <line x1="660" y1="150" x2="798" y2="315"/>
+    <line x1="660" y1="335" x2="798" y2="335"/>
+    <line x1="920" y1="300" x2="920" y2="172"/>
+    <line x1="920" y1="500" x2="920" y2="372" marker-start="url(#a)"/>
+    <line x1="1040" y1="335" x2="1108" y2="335" marker-start="url(#a)"/>
+  </g>
+
+  <g font-size="12" fill="#333">
+    <text x="320" y="128" text-anchor="middle">reads</text>
+    <text x="320" y="228" text-anchor="middle">reads</text>
+    <text x="320" y="328" text-anchor="middle">reads</text>
+    <text x="320" y="428" text-anchor="middle">reads</text>
+    <text x="320" y="528" text-anchor="middle">reads</text>
+    <text x="745" y="215" text-anchor="middle">exit reached</text>
+    <text x="745" y="230" text-anchor="middle">CompleteLevel</text>
+    <text x="730" y="325" text-anchor="middle">boss dead</text>
+    <text x="730" y="355" text-anchor="middle">CompleteLevel</text>
+    <text x="930" y="230" text-anchor="start">unlockedLevel,</text>
+    <text x="930" y="245" text-anchor="start">bestScore</text>
+    <text x="930" y="430" text-anchor="start">name, color, music,</text>
+    <text x="930" y="445" text-anchor="start">volume, fullscreen</text>
+    <text x="1075" y="325" text-anchor="middle">JSON</text>
+  </g>
+
+  <g font-size="15" fill="#333">
+    <text x="40" y="630"><tspan font-weight="bold">Save moments:</tspan> after a level, when a setting changes, OnApplicationPause(true)</text>
+    <text x="40" y="660"><tspan font-weight="bold">Safe load:</tspan> no file or broken file → try/catch → default SaveData, no crash</text>
+    <text x="40" y="690"><tspan font-weight="bold">Reset:</tspan> Settings → RESET PROGRESS → ConfirmPanel → YES → SaveSystem.ResetProgress()</text>
+  </g>
+</svg>
